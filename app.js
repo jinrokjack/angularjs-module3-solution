@@ -70,7 +70,7 @@ function MenuSearchService($http, ApiBasePath) {
         console.log(searchTerm);
         for (var i = 0; i < all.menu_items.length; i++) {
           var item = all.menu_items[i];
-          if (searchTerm != null && searchTerm !== "" && item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
+          if (searchTerm != null && searchTerm !== "" && item.description.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
             foundItems.push(item);
           }
         }
