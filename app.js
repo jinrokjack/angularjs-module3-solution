@@ -14,6 +14,7 @@ function FoundItems() {
     scope: {
       items: '<',
       myTerm: '@term',
+      myMessage: '@message',
       onRemove: '&'
     },
     controller: FoundItemsController,
@@ -28,6 +29,7 @@ function FoundItemsController() {
   var menu = this;
 
   menu.items = [];
+  menu.message = "Nothing found";
 }
 
 NarrowItDownController.$inject = ['MenuSearchService'];
@@ -39,6 +41,11 @@ function NarrowItDownController (MenuSearchService) {
     .then(function (results) {
       menu.items = results.foundItems;
       menu.term = results.searchTerm;
+      if (!results.foundItems.length) {
+        menu.message = "Nothing found";
+      } else {
+        menu.message = "";
+      }
       // console.log(menu);
     });
   }
